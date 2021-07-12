@@ -1,0 +1,13 @@
+{
+  "name"         : "node-red-contrib-scale",
+  "version"      : "0.0.1",
+  "description"  : "A simple node to scale a float",
+  "dependencies": {
+  },
+  "keywords": [ "node-red" ],
+  "node-red"     : {
+      "nodes": {
+          "scale": "node/scale.js"
+      }
+  }
+}

@@ -1,0 +1,54 @@
+<script type="text/javascript">
+    RED.nodes.registerType('scale', {
+        category: 'function',
+        color: '#EBEDEC',
+        defaults: {
+            name: { value: "" },
+            inputMin: { value: "0" },
+            inputMax: { value: "1000" },
+            outputMin: { value: "0" },
+            outputMax: { value: "100" },
+            precision: { value: "2" }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "icon.png",
+        label: function () {
+            return this.name || "scale";
+        }
+
+    });
+</script>
+
+<script type="text/x-red" data-template-name="scale">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-inputMin"><i class="fa fa-arrow-down"></i>Input Minimum Value</label>
+        <input type="text" id="node-inputMin" placeholder="input minimum"  style="width: 150px;">
+    </div>
+    <div class="form-row">
+        <label for="node-input-inputMax"><i class="fa fa-arrow-down"></i>Input Maximum Value</label>
+        <input type="text" id="node-inputMax" placeholder="input maximum"  style="width: 150px;">
+    </div>
+    <div class="form-row">
+        <label for="node-input-outputMin"><i class="fa fa-arrow-down"></i>Output Minimum Value</label>
+        <input type="text" id="node-outputMin" placeholder="output minimum"  style="width: 150px;">
+    </div>
+    <div class="form-row">
+        <label for="node-input-outputMax"><i class="fa fa-arrow-down"></i>Output Maximum Value</label>
+        <input type="text" id="node-outputMax" placeholder="output maximum"  style="width: 150px;">
+    </div>
+    <div class="form-row">
+        <label for="node-input-precision"><i class="icon-tag"></i>Dec Places</label>
+        <input type="text" id="node-input-precision" placeholder="dec"  style="width: 50px;">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="Scale Values">
+    <p>A node that scales a numerical value (integer or float) with a preconfigured range<br/>
+    </br>  
+   </p>
+</script>
