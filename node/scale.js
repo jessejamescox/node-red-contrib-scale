@@ -10,7 +10,7 @@ module.exports = function (RED) {
 
         // the values inherieted from the html
         this.iMin = parseFloat(n.inputMin);
-        this.iMax = parseFloat(n.outputMax);
+        this.iMax = parseFloat(n.inputMax);
         this.oMin = parseFloat(n.outputMin);
         this.oMax = parseFloat(n.outputMax);
         this.prec = parseInt(n.precision);
