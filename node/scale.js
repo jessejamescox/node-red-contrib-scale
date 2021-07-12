@@ -9,14 +9,14 @@ module.exports = function (RED) {
         //var context = this.context();
 
         // the values inherieted from the html
-        this.iMin = n.inputMin;
-        this.iMax = n.outputMax;
-        this.oMin = n.outputMin;
-        this.oMax = n.outputMax;
-        this.prec = n.precision;
+        this.iMin = parseFloat(n.inputMin);
+        this.iMax = parseFloat(n.outputMax);
+        this.oMin = parseFloat(n.outputMin);
+        this.oMax = parseFloat(n.outputMax);
+        this.prec = parseInt(n.precision);
 
         // main node object
-        var node = this;
+        let node = this;
 
         // scales number
         function scaler(x, i_lo, i_hi, o_lo, o_hi) {
