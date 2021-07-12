@@ -46,6 +46,11 @@ module.exports = function (RED) {
         // function called when input is recieved
         this.on('input', function (msg) {
 
+            var iMin = inMin;
+            var iMax = inMax;
+            var oMin = outMin;
+            var oMax = outMax;
+
             // process the incoming signal
             var rawInput = parseFloat(msg.payload);
 
@@ -53,7 +58,7 @@ module.exports = function (RED) {
             var outputMsg = {};
 
             // now we do the work
-            var scalerHold = scaler(msg.payload, inMin, inMax, outMin, outMax);
+            var scalerHold = scaler(rawInput, iMin, iMax, oMin, oMax);
 
             // map this hold to the output
             outputMsg.payload = toFixed(scalerHold, precision);
