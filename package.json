@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "author": "Jesse Cox",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jessejamescox/node-red-contrib-scale.git"
+  },
   "description": "A simple node to scale a float",
   "dependencies": {},
   "keywords": [
