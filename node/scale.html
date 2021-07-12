@@ -4,11 +4,11 @@
         color: '#EBEDEC',
         defaults: {
             name: { value: "" },
-            inputMin: { value: "0" },
-            inputMax: { value: "1000" },
-            outputMin: { value: "0" },
-            outputMax: { value: "100" },
-            precision: { value: "2" }
+            inputMin: { value: "" },
+            inputMax: { value: "" },
+            outputMin: { value: "" },
+            outputMax: { value: "" },
+            precision: { value: "" }
         },
         inputs: 1,
         outputs: 1,
@@ -26,23 +26,23 @@
     </div>
     <div class="form-row">
         <label for="node-input-inputMin"><i class="fa fa-arrow-down"></i>Input Minimum Value</label>
-        <input type="text" id="node-inputMin" placeholder="input minimum"  style="width: 150px;">
+        <input type="numerical" id="node-inputMin" placeholder="input minimum"  style="width: 150px;">
     </div>
     <div class="form-row">
-        <label for="node-input-inputMax"><i class="fa fa-arrow-down"></i>Input Maximum Value</label>
-        <input type="text" id="node-inputMax" placeholder="input maximum"  style="width: 150px;">
+        <label for="node-input-inputMax"><i class="fa fa-arrow-up"></i>Input Maximum Value</label>
+        <input type="numerical" id="node-inputMax" placeholder="input maximum"  style="width: 150px;">
     </div>
     <div class="form-row">
         <label for="node-input-outputMin"><i class="fa fa-arrow-down"></i>Output Minimum Value</label>
-        <input type="text" id="node-outputMin" placeholder="output minimum"  style="width: 150px;">
+        <input type="numerical" id="node-outputMin" placeholder="output minimum"  style="width: 150px;">
     </div>
     <div class="form-row">
-        <label for="node-input-outputMax"><i class="fa fa-arrow-down"></i>Output Maximum Value</label>
-        <input type="text" id="node-outputMax" placeholder="output maximum"  style="width: 150px;">
+        <label for="node-input-outputMax"><i class="fa fa-arrow-up"></i>Output Maximum Value</label>
+        <input type="numerical" id="node-outputMax" placeholder="output maximum"  style="width: 150px;">
     </div>
     <div class="form-row">
         <label for="node-input-precision"><i class="icon-tag"></i>Dec Places</label>
-        <input type="text" id="node-input-precision" placeholder="dec"  style="width: 50px;">
+        <input type="numerical" id="node-input-precision" placeholder="dec"  style="width: 50px;">
     </div>
 </script>
 
