@@ -8,13 +8,15 @@ module.exports = function (RED) {
         // this function does not require context, if it did, we would declare it here
         //var context = this.context();
 
-        // the main node object inhereited from the html
+        // the values inherieted from the html
+        this.iMin = n.inputMin;
+        this.iMax = n.outputMax;
+        this.oMin = n.outputMin;
+        this.oMax = n.outputMax;
+        this.prec = n.precision;
+
+        // main node object
         var node = this;
-        var inMin = n.inputMin;
-        var inMax = n.outputMax;
-        var outMin = n.outputMin;
-        var outMax = n.outputMax;
-        var prec = n.precision;
 
         // scales number
         function scaler(x, i_lo, i_hi, o_lo, o_hi) {
@@ -46,11 +48,6 @@ module.exports = function (RED) {
         // function called when input is recieved
         this.on('input', function (msg) {
 
-            var iMin = inMin;
-            var iMax = inMax;
-            var oMin = outMin;
-            var oMax = outMax;
-
             // process the incoming signal
             var rawInput = parseFloat(msg.payload);
 
@@ -58,10 +55,10 @@ module.exports = function (RED) {
             var outputMsg = {};
 
             // now we do the work
-            var scalerHold = scaler(rawInput, iMin, iMax, oMin, oMax);
+            var scalerHold = scaler(rawInput, this.iMin, this.iMax, this.oMin, this.oMax);
 
             // map this hold to the output
-            outputMsg.payload = toFixed(scalerHold, precision);
+            outputMsg.payload = toFixed(scalerHold, this.prec);
 
             // send it!!
             node.send(outputMsg);
