@@ -20,7 +20,9 @@ module.exports = function (RED) {
 
         // scales number
         function scaler(x, i_lo, i_hi, o_lo, o_hi) {
+            //                 1000       /   100 = 10
             var multiplier = (o_hi - o_lo) / (i_hi - i_lo);
+            //                 10      *   
             var scaledVal = (multiplier * limit(i_lo, x, i_hi)) + o_lo;
             return (scaledVal);
         }
@@ -55,10 +57,11 @@ module.exports = function (RED) {
             var outputMsg = {};
 
             // now we do the work
-            var scalerHold = scaler(rawInput, this.iMin, this.iMax, this.oMin, this.oMax);
+            //var scalerHold = scaler(rawInput, this.iMin, this.iMax, this.oMin, this.oMax);
+            var scalerHold = ((rawInput - this.iMin) / (this.iMax - this.iMin) * (this.oMax - this.oMin)) + this.oMin;
 
             // map this hold to the output
-            outputMsg.payload = toFixed(scalerHold, this.prec);
+            outputMsg.payload = parseFloat(toFixed(scalerHold, this.prec));
 
             // send it!!
             node.send(outputMsg);
