@@ -23,11 +23,12 @@
 module.exports = function (RED) {
   "use strict";
 
-  // main function object, registered in trailing method
-  function scale(n) {
+  // main function constructor, registered in trailing method
+function scale(n) {
     RED.nodes.createNode(this, n);
 
-    // this function does not require context, if it did, we would declare it here
+    // **** this function does not require context, ****
+    // ****if it did, we would declare it here      ****
     //var context = this.context();
 
     // the values inherieted from the html
@@ -51,10 +52,10 @@ module.exports = function (RED) {
 
     // function called when input is recieved
     this.on("input", function (msg) {
-
-      // check the incoming payload to make sure its a number  
+      
+        // check the incoming payload to make sure its a number
       if (!isNaN(msg.payload)) {
-
+        
         // process the incoming signal
         var rawInput = parseFloat(msg.payload);
 
@@ -71,22 +72,25 @@ module.exports = function (RED) {
         outputMsg.payload = parseFloat(toFixed(scalerHold, this.prec));
 
         // set a status - all good
-        var statusString = ("input: " + msg.payload + " || output: " + outputMsg.payload);
-        this.status({fill:"green",shape:"ring",text:statusString });
+        var statusString =
+          "input: " + msg.payload + " || output: " + outputMsg.payload;
+        this.status({ fill: "green", shape: "ring", text: statusString });
 
         // send it!!
         node.send(outputMsg);
-      }
-      else{
-
+      } else {
+        
         // log the error (could be log, warn, trace, debug)
         this.error("Oh no, the incoming payload is not a number");
 
-        // set the status 
-        this.status({fill:"red",shape:"ring",text:"payload: NaN"});
-      
-        }
+        // set the status to error
+        this.status({ fill: "red", shape: "ring", text: "payload: NaN" });
+
+      }
+
     });
-  }
+  
+}
+
   RED.nodes.registerType("scale", scale);
 };
