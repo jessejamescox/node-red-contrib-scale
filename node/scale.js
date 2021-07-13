@@ -42,7 +42,7 @@ module.exports = function (RED) {
     var node = this;
 
     function scaler(x, i_min, i_max, o_min, o_max)  {
-        var scaled_val = ((x - i_min) / (i_max - i_min)) 
+        let scaled_val = ((x - i_min) / (i_max - i_min)) 
         * (o_max - o_min) + o_min;
         return scaled_val;
     }
@@ -61,20 +61,20 @@ module.exports = function (RED) {
       // check the incoming payload to make sure its a number
       if (!isNaN(msg.payload)) {
         // process the incoming signal
-        var rawInput = parseFloat(msg.payload);
+        let rawInput = parseFloat(msg.payload);
 
         // create the output object
-        var outputMsg = {};
+        let outputMsg = {};
 
         // now we do the work
-        var scalerHold = scaler(msg.payload, this.iMin, this.iMax, this.oMin, this.oMax);
+        let scalerHold = scaler(rawInput, this.iMin, this.iMax, this.oMin, this.oMax);
         //var scalerHold = ((rawInput - this.iMin) / (this.iMax - this.iMin)) * (this.oMax - this.oMin) + this.oMin;
 
         // map this hold to the output
         outputMsg.payload = parseFloat(toFixed(scalerHold, this.prec));
 
         // set a status - all good
-        var statusString =
+        let statusString =
           "input: " + msg.payload + " || output: " + outputMsg.payload;
         this.status({ fill: "green", shape: "ring", text: statusString });
 
