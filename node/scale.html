@@ -19,32 +19,33 @@
     });
 </script>
 
-<script type="text/html" data-template-name="node-type">
+<script type="text/x-red" data-template-name="scale">
     <div class="form-row">
-        <label for="node-input-name"><i class="icon-tag"></i>Name</label>
-        <input type="text" id="node-input-name" placeholder="Name">    
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
     </div>
     <div class="form-row">
-        <label for="node-input-inputMin"><i class="fa fa-minus-square"></i> Input Min</label>
-        <input type="text" id="node-input-inputMin">
+        <label for="node-input-inputMin"><i class="fa fa-arrow-down"></i>Input Minimum Value</label>
+        <input type="text" id="node-inputMin" placeholder="input minimum"  style="width: 150px;">
     </div>
     <div class="form-row">
-        <label for="node-input-inputMax"><i class="fa fa-plus-square"></i> Input Max</label>
-        <input type="text" id="node-input-inputMax">
+        <label for="node-input-inputMax"><i class="fa fa-arrow-up"></i>Input Maximum Value</label>
+        <input type="text" id="node-inputMax" placeholder="input maximum"  style="width: 150px;">
     </div>
     <div class="form-row">
-        <label for="node-input-outputMin"><i class="fa fa-minus-square"></i> Output Min</label>
-        <input type="text" id="node-input-outputMin">
+        <label for="node-input-outputMin"><i class="fa fa-arrow-down"></i>Output Minimum Value</label>
+        <input type="text" id="node-outputMin" placeholder="output minimum"  style="width: 150px;">
     </div>
     <div class="form-row">
-        <label for="node-input-outputMax"><i class="fa fa-plus-square"></i> Output Max</label>
-        <input type="text" id="node-input-outputMax">
+        <label for="node-input-outputMax"><i class="fa fa-arrow-up"></i>Output Maximum Value</label>
+        <input type="text" id="node-outputMax" placeholder="output maximum"  style="width: 150px;">
     </div>
     <div class="form-row">
-        <label for="node-input-precision"><i class="fa fa-dot-circle"></i> Precision</label>
-        <input type="text" id="node-input-precision">
+        <label for="node-input-precision"><i class="icon-tag"></i>Dec Places</label>
+        <input type="text" id="node-input-precision" placeholder="dec"  style="width: 50px;">
     </div>
 </script>
+
 
 <script type="text/html" data-help-name="node-type">
     <p>A node that scales a numerical value (integer or float) with a preconfigured range</p>

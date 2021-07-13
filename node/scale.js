@@ -88,6 +88,5 @@ module.exports = function (RED) {
       }
     });
   }
-
   RED.nodes.registerType("scale", scale);
 };
