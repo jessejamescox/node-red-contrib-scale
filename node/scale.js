@@ -24,7 +24,7 @@ module.exports = function (RED) {
   "use strict";
 
   // main function constructor, registered in trailing method
-function scale(n) {
+  function scale(n) {
     RED.nodes.createNode(this, n);
 
     // **** this function does not require context, ****
@@ -41,6 +41,14 @@ function scale(n) {
     // main node object
     var node = this;
 
+    function scaler(x, i_min, i_max, o_min, o_max)  {
+        var scaled_val = ((x - i_min) / (i_max - i_min)) 
+        * (o_max - o_min) + o_min;
+        return scaled_val;
+    }
+    
+    ((rawInput - this.iMin) / (this.iMax - this.iMin)) * (this.oMax - this.oMin) + this.oMin;
+
     // sets the decimal precision of output
     function toFixed(num, precision) {
       return (+(
@@ -52,10 +60,8 @@ function scale(n) {
 
     // function called when input is recieved
     this.on("input", function (msg) {
-      
-        // check the incoming payload to make sure its a number
+      // check the incoming payload to make sure its a number
       if (!isNaN(msg.payload)) {
-        
         // process the incoming signal
         var rawInput = parseFloat(msg.payload);
 
@@ -63,10 +69,8 @@ function scale(n) {
         var outputMsg = {};
 
         // now we do the work
-        var scalerHold =
-          ((rawInput - this.iMin) / (this.iMax - this.iMin)) *
-            (this.oMax - this.oMin) +
-          this.oMin;
+        var scalerHold = scaler(msg.payload, this.iMin, this.iMax, this.oMin, this.oMax);
+        //var scalerHold = ((rawInput - this.iMin) / (this.iMax - this.iMin)) * (this.oMax - this.oMin) + this.oMin;
 
         // map this hold to the output
         outputMsg.payload = parseFloat(toFixed(scalerHold, this.prec));
@@ -79,18 +83,14 @@ function scale(n) {
         // send it!!
         node.send(outputMsg);
       } else {
-        
         // log the error (could be log, warn, trace, debug)
         this.error("Oh no, the incoming payload is not a number");
 
         // set the status to error
         this.status({ fill: "red", shape: "ring", text: "payload: NaN" });
-
       }
-
     });
-  
-}
+  }
 
   RED.nodes.registerType("scale", scale);
 };
