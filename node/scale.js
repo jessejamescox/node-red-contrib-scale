@@ -46,8 +46,6 @@ module.exports = function (RED) {
         * (o_max - o_min) + o_min;
         return scaled_val;
     }
-    
-    ((rawInput - this.iMin) / (this.iMax - this.iMin)) * (this.oMax - this.oMin) + this.oMin;
 
     // sets the decimal precision of output
     function toFixed(num, precision) {
