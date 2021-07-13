@@ -74,7 +74,7 @@ module.exports = function (RED) {
 
         // set a status - all good
         let statusString =
-          "input: " + msg.payload + " || output: " + outputMsg.payload;
+          "in: " + msg.payload + " out: " + outputMsg.payload;
         this.status({ fill: "green", shape: "ring", text: statusString });
 
         // send it!!
