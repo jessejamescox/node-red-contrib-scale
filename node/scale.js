@@ -68,7 +68,6 @@ module.exports = function (RED) {
 
         // now we do the work
         let scalerHold = scaler(rawInput, this.iMin, this.iMax, this.oMin, this.oMax);
-        //var scalerHold = ((rawInput - this.iMin) / (this.iMax - this.iMin)) * (this.oMax - this.oMin) + this.oMin;
 
         // map this hold to the output
         outputMsg.payload = parseFloat(toFixed(scalerHold, this.prec));
